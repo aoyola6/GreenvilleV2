@@ -64,7 +64,7 @@ namespace GreenvilleIdol{
                                       (currentYearContestants * 25) :
                                       (lastYearContestants * 25);
                 Console.WriteLine($"\nThis year's expected revenue: ${expectedRevenue}");
-                Console.WriteLine($"Comparison: {(currentYearContestants > lastYearContestants ? "The competition is bigger than ever!" : "Fewer contestants")}");
+                Console.WriteLine($"Comparison: {(currentYearContestants > lastYearContestants ? "The competition is bigger than ever!" : "A tighter race this year! Come out and cast your vote!")}");
             }
         }
     }
