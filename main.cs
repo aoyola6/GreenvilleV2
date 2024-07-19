@@ -54,17 +54,38 @@ namespace GreenvilleIdol{
                 Console.WriteLine("1. Calculate Greenville Revenue Year-Over-Year");
                 Console.WriteLine("2. Exit");
             }
-            private static void CalculateExpectedRevenue()
+        private static void CalculateExpectedRevenue()
             {
-                Console.Write("Enter the number of contestants this year: ");
-                int currentYearContestants = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter the number of contestants last year: ");
-                int lastYearContestants = Convert.ToInt32(Console.ReadLine());
-                double expectedRevenue = (currentYearContestants > lastYearContestants) ?
-                                      (currentYearContestants * 25) :
-                                      (lastYearContestants * 25);
+                int currentYearContestants = 0; 
+                int lastYearContestants = 0; 
+                bool isValidInput = false;
+                while (!isValidInput)
+                {
+                    try
+                    {
+                        Console.Write("Enter the number of contestants this year: ");
+                        currentYearContestants = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Enter the number of contestants last year: ");
+                        lastYearContestants = Convert.ToInt32(Console.ReadLine());
+                        if ((currentYearContestants >= 0 && currentYearContestants <= 30) &&
+                            (lastYearContestants >= 0 && lastYearContestants <= 30))
+                        {
+                            isValidInput = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter a number between 0 and 30.");
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a numeric value.");
+                    }
+                }
+                double expectedRevenue = (currentYearContestants > lastYearContestants) ?                              (currentYearContestants * 25) :
+                                          (lastYearContestants * 25);
                 Console.WriteLine($"\nThis year's expected revenue: ${expectedRevenue}");
                 Console.WriteLine($"Comparison: {(currentYearContestants > lastYearContestants ? "The competition is bigger than ever!" : "A tighter race this year! Come out and cast your vote!")}");
-            }
+            }            
         }
-    }
+        }
